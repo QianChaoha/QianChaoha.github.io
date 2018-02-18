@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="Weex," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -36,21 +36,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="安装Node.js安装Android环境(包括Java AndroidStudio)安装weex-toolkit1npm install weex-toolkit -g 用如下命令检测是否安装完成12345D:\work\weex\helloWeex&amp;gt;weex -v   v1.2.6 - weexpack : v1.0.2 - weex-builder : v0.3.12 - weex-pr">
-<meta name="keywords" content="Weex">
+<meta name="description" content="1EventBus.getDefault().register(this);">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一个Weex项目">
-<meta property="og:url" content="http://yoursite.com/2018/01/21/第一个Weex项目/index.html">
+<meta property="og:title" content="EventBus源码解析">
+<meta property="og:url" content="http://yoursite.com/2018/02/18/EventBus源码解析/index.html">
 <meta property="og:site_name" content="superman">
-<meta property="og:description" content="安装Node.js安装Android环境(包括Java AndroidStudio)安装weex-toolkit1npm install weex-toolkit -g 用如下命令检测是否安装完成12345D:\work\weex\helloWeex&amp;gt;weex -v   v1.2.6 - weexpack : v1.0.2 - weex-builder : v0.3.12 - weex-pr">
+<meta property="og:description" content="1EventBus.getDefault().register(this);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/第一个Weex项目/error.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/21/第一个Weex项目/32175416.jpg">
-<meta property="og:updated_time" content="2018-01-21T09:26:53.354Z">
+<meta property="og:updated_time" content="2018-02-18T14:13:23.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一个Weex项目">
-<meta name="twitter:description" content="安装Node.js安装Android环境(包括Java AndroidStudio)安装weex-toolkit1npm install weex-toolkit -g 用如下命令检测是否安装完成12345D:\work\weex\helloWeex&amp;gt;weex -v   v1.2.6 - weexpack : v1.0.2 - weex-builder : v0.3.12 - weex-pr">
-<meta name="twitter:image" content="http://yoursite.com/2018/01/21/第一个Weex项目/error.png">
+<meta name="twitter:title" content="EventBus源码解析">
+<meta name="twitter:description" content="1EventBus.getDefault().register(this);">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -60,7 +57,7 @@
   };
 </script>
 
-  <title> 第一个Weex项目 | superman </title>
+  <title> EventBus源码解析 | superman </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -310,7 +307,7 @@
           
           
             
-              第一个Weex项目
+              EventBus源码解析
             
           
         </h1>
@@ -319,8 +316,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2018-01-21T17:02:39+08:00" content="2018-01-21">
-            2018-01-21
+          <time itemprop="dateCreated" datetime="2018-02-18T22:09:58+08:00" content="2018-02-18">
+            2018-02-18
           </time>
         </span>
 
@@ -329,8 +326,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Weex/" itemprop="url" rel="index">
-                  <span itemprop="name">Weex</span>
+                <a href="/categories/Android/" itemprop="url" rel="index">
+                  <span itemprop="name">Android</span>
                 </a>
               </span>
 
@@ -353,24 +350,8 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><h3 id="安装Android环境-包括Java-AndroidStudio"><a href="#安装Android环境-包括Java-AndroidStudio" class="headerlink" title="安装Android环境(包括Java AndroidStudio)"></a>安装Android环境(包括Java AndroidStudio)</h3><h3 id="安装weex-toolkit"><a href="#安装weex-toolkit" class="headerlink" title="安装weex-toolkit"></a>安装weex-toolkit</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install weex-toolkit -g</span><br></pre></td></tr></table></figure>
-<p>用如下命令检测是否安装完成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\work\weex\helloWeex&gt;weex -v</span><br><span class="line">   v1.2.6</span><br><span class="line"> - weexpack : v1.0.2</span><br><span class="line"> - weex-builder : v0.3.12</span><br><span class="line"> - weex-previewer : v1.4.4</span><br></pre></td></tr></table></figure></p>
-<p>如果没有安装weexpack，执行下面命令安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install weexpack -g</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装全局webpack"><a href="#安装全局webpack" class="headerlink" title="安装全局webpack"></a>安装全局webpack</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack -g</span><br></pre></td></tr></table></figure>
-<h3 id="建立一个helloWeex项目"><a href="#建立一个helloWeex项目" class="headerlink" title="建立一个helloWeex项目"></a>建立一个helloWeex项目</h3><blockquote>
-<p>选择一个目录，执行</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weex create helloWeex</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>进入helloWeex目录,执行npm install</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\work\weex&gt;cd helloWeex</span><br><span class="line">D:\work\weex\helloWeex&gt;npm install</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/01/21/第一个Weex项目/error.png" alt=""></p>
-<blockquote>
-<p>注:报错了,解决办法，使用cnpm</p>
-</blockquote>
-<h3 id="添加Android应用支持"><a href="#添加Android应用支持" class="headerlink" title="添加Android应用支持"></a>添加Android应用支持</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weex run android</span><br></pre></td></tr></table></figure>
-<p>执行完毕后,helloWeex目录下的platforms目录就有一个android项目了,使用androidStudio打开项目并运行<br><img src="/2018/01/21/第一个Weex项目/32175416.jpg" alt=""></p>
+        <span itemprop="articleBody"><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure></blockquote>
 </span>
       
     </div>
@@ -379,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Weex/" rel="tag">#Weex</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -388,13 +369,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/18/EventBus源码解析/" rel="prev">EventBus源码解析</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/12/Hexo部署到自己的域名/" rel="next">Hexo部署到自己的域名</a>
+              <a href="/2018/01/21/第一个Weex项目/" rel="next">第一个Weex项目</a>
             
           </div>
         </div>
@@ -654,7 +633,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">1.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Android环境-包括Java-AndroidStudio"><span class="nav-number">2.</span> <span class="nav-text">安装Android环境(包括Java AndroidStudio)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装weex-toolkit"><span class="nav-number">3.</span> <span class="nav-text">安装weex-toolkit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装全局webpack"><span class="nav-number">4.</span> <span class="nav-text">安装全局webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立一个helloWeex项目"><span class="nav-number">5.</span> <span class="nav-text">建立一个helloWeex项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加Android应用支持"><span class="nav-number">6.</span> <span class="nav-text">添加Android应用支持</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
