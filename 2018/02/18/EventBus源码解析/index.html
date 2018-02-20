@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="superman">
 <meta property="og:description" content="1EventBus.getDefault().register(this);  主要调用12345678910111213public void register(Object subscriber) &amp;#123;       Class&amp;lt;?&amp;gt; subscriberClass = subscriber.getClass();       List&amp;lt;SubscriberMetho">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T14:18:47.069Z">
+<meta property="og:updated_time" content="2018-02-20T11:58:16.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus源码解析">
 <meta name="twitter:description" content="1EventBus.getDefault().register(this);  主要调用12345678910111213public void register(Object subscriber) &amp;#123;       Class&amp;lt;?&amp;gt; subscriberClass = subscriber.getClass();       List&amp;lt;SubscriberMetho">
@@ -354,6 +354,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>主要调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void register(Object subscriber) &#123;</span><br><span class="line">       Class&lt;?&gt; subscriberClass = subscriber.getClass();</span><br><span class="line">       List&lt;SubscriberMethod&gt; subscriberMethods = this.subscriberMethodFinder.findSubscriberMethods(subscriberClass);</span><br><span class="line">       synchronized(this) &#123;</span><br><span class="line">           Iterator var5 = subscriberMethods.iterator();</span><br><span class="line"></span><br><span class="line">           while(var5.hasNext()) &#123;</span><br><span class="line">               SubscriberMethod subscriberMethod = (SubscriberMethod)var5.next();</span><br><span class="line">               this.subscribe(subscriber, subscriberMethod);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>假定此方法参数Object subscriber中subscriber传入的是MainActivity.this</p>
+</blockquote>
+<ul>
+<li>subscriberClass获取的就是MainActivity.class</li>
+<li>subscriberMethods是一个List列表,获取的是MainActivity类中所有有注解@Subscribe的方法</li>
+<li>最后调用this.subscribe(subscriber, subscriberMethod)<br>  subscriber是MainActivity,subscriberMethod是subscriberMethods列表中的item</li>
+</ul>
 </span>
       
     </div>
